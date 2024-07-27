@@ -1,0 +1,65 @@
+<form id="edit-form" class="form-horizontal" role="form" data-toggle="validator" method="POST" action="">
+
+    <div class="form-group">
+        <label class="control-label col-xs-12 col-sm-2">{:__('User_id')}:</label>
+        <div class="col-xs-12 col-sm-8">
+            <input id="c-user_id" data-select-only="true" disabled="disabled" data-rule="required" data-source="user/user/index" data-field="nickname" class="form-control selectpage" name="row[user_id]" type="text" value="{$row.user_id|htmlentities}">
+        </div>
+    </div>
+    <div class="form-group">
+        <label class="control-label col-xs-12 col-sm-2">{:__('Cid')}:</label>
+        <div class="col-xs-12 col-sm-8">
+            <input id="c-cid" data-select-only="true" disabled="disabled" data-rule="required" data-source="category/index" data-field="name" class="form-control selectpage" name="row[cid]" type="text" value="{$row.cid|htmlentities}">
+        </div>
+    </div>
+    <div class="form-group">
+        <label class="control-label col-xs-12 col-sm-2">{:__('Title')}:</label>
+        <div class="col-xs-12 col-sm-8">
+            <input id="c-title" disabled class="form-control" name="row[title]" type="text" value="{$row.title|htmlentities}">
+        </div>
+    </div>
+    <div class="form-group">
+        <label class="control-label col-xs-12 col-sm-2">{:__('Content')}:</label>
+        <div class="col-xs-12 col-sm-8">
+            <textarea disabled="disabled" id="c-content" class="form-control editor" rows="5" name="row[content]" cols="50">{$row.content|htmlentities}</textarea>
+        </div>
+    </div>
+    <div class="form-group">
+        <label class="control-label col-xs-12 col-sm-2">{:__('Reply')}:</label>
+        <div class="col-xs-12 col-sm-8">
+            <textarea id="c-reply" data-rule="required" class="form-control editor" rows="5" name="row[reply]" cols="50">{$row.reply|htmlentities}</textarea>
+        </div>
+    </div>
+    {/*<div class="form-group">
+        <label class="control-label col-xs-12 col-sm-2">{:__('Image')&cc;:</label>
+        <div class="col-xs-12 col-sm-8">
+            <div class="input-group">
+                <input id="c-image" class="form-control" size="50" name="row[image]" type="text" value="{$row.image|htmlentities&cc;">
+                <div class="input-group-addon no-border no-padding">
+                    <span><button type="button" id="faupload-image" class="btn btn-danger faupload" data-input-id="c-image" data-mimetype="image/gif,image/jpeg,image/png,image/jpg,image/bmp,image/webp" data-multiple="false" data-preview-id="p-image"><i class="fa fa-upload"></i> {:__('Upload')&cc;</button></span>
+                    <span><button type="button" id="fachoose-image" class="btn btn-primary fachoose" data-input-id="c-image" data-mimetype="image/*" data-multiple="false"><i class="fa fa-list"></i> {:__('Choose')&cc;</button></span>
+                </div>
+                <span class="msg-box n-right" for="c-image"></span>
+            </div>
+            <ul class="row list-inline faupload-preview" id="p-image"></ul>
+        </div>
+    </div>*/}
+    {/*<div class="form-group">
+        <label class="control-label col-xs-12 col-sm-2">{:__('Status')&cc;:</label>
+        <div class="col-xs-12 col-sm-8">
+            
+            <div class="radio">
+            {foreach name="statusList" item="vo"&cc;
+            <label for="row[status]-{$key&cc;"><input id="row[status]-{$key&cc;" name="row[status]" type="radio" value="{$key&cc;" {in name="key" value="$row.status"&cc;checked{/in&cc; /> {$vo&cc;</label>
+            {/foreach&cc;
+            </div>
+
+        </div>
+    </div>*/}
+    <div class="form-group layer-footer">
+        <label class="control-label col-xs-12 col-sm-2"></label>
+        <div class="col-xs-12 col-sm-8">
+            <button type="submit" class="btn btn-primary btn-embossed disabled">{:__('OK')}</button>
+        </div>
+    </div>
+</form>
