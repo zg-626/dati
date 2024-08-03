@@ -7,7 +7,7 @@ use think\db\Query;
 use think\Model;
 use traits\model\SoftDelete;
 
-class Question extends Model
+class Banner extends Model
 {
 
     use SoftDelete;
@@ -15,7 +15,7 @@ class Question extends Model
     
 
     // 表名
-    protected $name = 'question';
+    protected $name = 'banner';
     
     // 自动写入时间戳字段
     protected $autoWriteTimestamp = 'integer';
@@ -89,5 +89,12 @@ class Question extends Model
     public function category()
     {
         return $this->belongsTo('Category', 'cid', 'id', [], 'LEFT')->setEagerlyType(0);
+    }
+
+    public function getImageAttr($value)
+    {
+        if ($value) {
+            return cdnurl($value, true);
+        }
     }
 }

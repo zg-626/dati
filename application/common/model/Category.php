@@ -84,4 +84,23 @@ class Category extends Model
         })->order('weigh', 'desc')->select())->toArray();
         return $list;
     }
+
+    //关联问答表
+    public function question()
+    {
+        return $this->hasMany('Question', 'cid', 'id');
+    }
+
+    public function getImageAttr($value)
+    {
+        if ($value) {
+            return cdnurl($value, true);
+        }
+    }
+
+    // 处理图片
+    /*public function getImagesAttr($value)
+    {
+        return json_decode($value, true);
+    }*/
 }

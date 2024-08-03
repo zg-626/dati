@@ -61,6 +61,7 @@ class Sms
         return true;
     }
 
+
     /**
      * 发送通知
      *
@@ -78,6 +79,22 @@ class Sms
         ];
         $result = Hook::listen('sms_notice', $params, null, true);
         return (bool)$result;
+    }
+
+    public static function notices($mobile,$template = null,$params = [],$sign = null)
+    {
+
+        $appid=1400926353;
+        $appkey="b5539797c0afabbf653618860dc00e9b";
+        $sing=new SmsSingleSender($appid,$appkey);
+        //您有新的订单，订单单号 {1}，预定人姓名 {2}，联系方式 {3}入营人数为 {4}人，入营时间为 {5}，请至平台查看！
+
+        $ret=$sing->sendWithParam("86",$mobile, $template, $params, $sign, "","");
+        if ($ret) {
+            return true;
+        }
+
+        return false;
     }
 
     /**

@@ -64,6 +64,29 @@ class Sms extends Api
     }
 
     /**
+     * 发送验证码
+     *
+     * @ApiMethod (POST)
+     * @param string $mobile 手机号
+     * @param string $event 事件名称
+     */
+    public function notice()
+    {
+        $mobile = $this->request->post("mobile");
+        $event = $this->request->post("event");
+        $event = $event ? $event : 'order';
+
+        //您有新的订单，订单单号 {1}，预定人姓名 {2}，联系方式 {3}入营人数为 {4}人，入营时间为 {5}，请至平台查看！
+        $params=[100,'张三','18688888888',10,'2020-01-01 00:00:00'];
+        $ret = Smslib::notices($mobile,$event,$params, '鸿生杏香院餐饮');
+        if ($ret) {
+            $this->success(__('发送成功'));
+        } else {
+            $this->error(__('发送失败，请检查短信配置是否正确'));
+        }
+    }
+
+    /**
      * 检测验证码
      *
      * @ApiMethod (POST)
