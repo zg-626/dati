@@ -2,6 +2,9 @@
 
 namespace app\admin\library\traits;
 
+use fast\Random;
+use PhpOffice\PhpSpreadsheet\Cell\DataType;
+use PhpOffice\PhpSpreadsheet\Shared\Date;
 use app\admin\library\Auth;
 use Exception;
 use PhpOffice\PhpSpreadsheet\Cell\Coordinate;

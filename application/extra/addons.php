@@ -3,11 +3,8 @@
 return [
     'autoload' => false,
     'hooks' => [
-        'wipecache_after' => [
-            'tinymce',
-        ],
-        'set_tinymce' => [
-            'tinymce',
+        'config_init' => [
+            'nkeditor',
         ],
     ],
     'route' => [

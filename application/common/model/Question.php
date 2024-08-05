@@ -90,4 +90,24 @@ class Question extends Model
     {
         return $this->belongsTo('Category', 'cid', 'id', [], 'LEFT')->setEagerlyType(0);
     }
+
+    public function getContentAttr($value)
+    {
+        return $this->get_file_domain($value);
+    }
+
+    /**
+     * @notes 设置内容图片域名
+     * @param $content
+     * @return array|string|string[]|null
+     * @author 段誉
+     * @date 2022/9/26 10:43
+     */
+    public function get_file_domain($content)
+    {
+        $preg = '/(<img .*?src=")[^https|^http](.*?)(".*?>)/is';
+        $url=request()->domain();
+        $fileUrl = $url;
+        return preg_replace($preg, "\${1}$fileUrl\${2}\${3}", $content);
+    }
 }

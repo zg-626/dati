@@ -84,7 +84,7 @@ if (!function_exists('cdnurl')) {
      * @param boolean $domain 是否显示域名 或者直接传入域名
      * @return string
      */
-    function cdnurl($url, $domain = false)
+    function cdnurl($url='', $domain = false)
     {
         $regex = "/^((?:[a-z]+:)?\/\/|data:image\/)(.*)/i";
         $cdnurl = \think\Config::get('upload.cdnurl');
