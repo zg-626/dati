@@ -96,7 +96,8 @@ class Question extends Api
     public function getCate()
     {
         $where['status'] = 'normal';
-        $list = $this->getList(Category::class,[], $where, null, null, 'id,name,image,type,flag');
+        $order = ['weigh' => 'desc', 'id' => 'desc'];
+        $list = $this->getList(Category::class,[], $where, null, $order, 'id,name,image,type,flag');
         //统计各栏目问题数量
         foreach ($list['list'] as $k => $v) {
             $list['list'][$k]['count'] = $this->getCount(QuestionModel::class, ['cid' => $v['id']]);

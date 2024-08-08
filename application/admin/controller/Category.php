@@ -113,12 +113,12 @@ class Category extends Backend
             if ($params) {
                 $params = $this->preExcludeFields($params);
 
-                if ($params['pid'] != $row['pid']) {
+                /*if ($params['pid'] != $row['pid']) {
                     $childrenIds = Tree::instance()->init(collection(\app\common\model\Category::select())->toArray())->getChildrenIds($row['id'], true);
                     if (in_array($params['pid'], $childrenIds)) {
                         $this->error(__('Can not change the parent to child or itself'));
                     }
-                }
+                }*/
 
                 try {
                     //是否采用模型验证
