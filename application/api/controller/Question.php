@@ -124,6 +124,12 @@ class Question extends Api
      */
     public function add()
     {
+        $user = $this->auth->getUser();
+        // 检测有没有开通会员
+        if ($user->is_vip == 0) {
+            $this->error('您还不是会员，请联系管理员开通会员');
+        }
+
         $data = $this->request->post(false);
         $this->check_params($data, ['title', 'content', 'cid']);
         $data['user_id'] = $this->auth->id;

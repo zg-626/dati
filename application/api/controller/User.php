@@ -86,7 +86,8 @@ class User extends Api
             //如果已经有账号则直接登录
             $ret = $this->auth->direct($user->id);
         } else {
-            $ret = $this->auth->register($mobile, Random::alnum(), '', $mobile, []);
+            $this->error('请联系管理员');
+            //$ret = $this->auth->register($mobile, Random::alnum(), '', $mobile, []);
         }
         if ($ret) {
             Sms::flush($mobile, 'mobilelogin');
