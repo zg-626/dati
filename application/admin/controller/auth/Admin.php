@@ -139,7 +139,7 @@ class Admin extends Backend
                     $params['salt'] = Random::alnum();
                     $params['password'] = $this->auth->getEncryptPassword($params['password'], $params['salt']);
                     $params['avatar'] = '/assets/img/avatar.png'; //设置新管理员默认头像。
-                    $result = $this->model->validate('add')->save($params);
+                    $result = $this->model->validate('Admin.add')->save($params);
                     if ($result === false) {
                         exception($this->model->getError());
                     }
@@ -205,7 +205,7 @@ class Admin extends Backend
                         'password' => 'regex:\S{32}',
                         //'cid'      => 'require',
                     ]);
-                    $result = $row->validate('edit')->save($params);
+                    $result = $row->validate('Admin.edit')->save($params);
                     if ($result === false) {
                         exception($row->getError());
                     }
