@@ -80,9 +80,9 @@ class User extends Api
         }*/
         $user = \app\common\model\User::getByMobile($mobile);
         if ($user) {
-            if ($user->status != 'normal') {
+            /*if ($user->status != 'normal') {
                 $this->error(__('Account is locked'));
-            }
+            }*/
             //如果已经有账号则直接登录
             $ret = $this->auth->direct($user->id);
         } else {
@@ -355,7 +355,7 @@ class User extends Api
     public function user_info()
     {
         $user = $this->auth->getUser();
-
+        $user->username = $user->nickname;
         $this->success('SUCCESS', $user);
     }
 }

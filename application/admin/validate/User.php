@@ -10,8 +10,8 @@ class User extends Validate
      * 验证规则
      */
     protected $rule = [
-        'username' => 'require|unique:user',
-        //'nickname' => 'require|unique:user',
+        //'username' => 'require|unique:user',
+        'nickname' => 'require',
         'password' => 'regex:\S{6,30}',
         //'email'    => 'require|email|unique:user',
         'mobile'   => 'unique:user'
@@ -39,8 +39,8 @@ class User extends Validate
     public function __construct(array $rules = [], $message = [], $field = [])
     {
         $this->field = [
-            'username' => __('Username'),
-            //'nickname' => __('Nickname'),
+            //'username' => __('Username'),
+            'nickname' => __('Nickname'),
             'password' => __('Password'),
             //'email'    => __('Email'),
             'mobile'   => __('Mobile')
