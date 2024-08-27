@@ -84,18 +84,25 @@ class User extends Api
                 $this->error(__('Account is locked'));
             }*/
             //如果已经有账号则直接登录
-            $ret = $this->auth->direct($user->id);
+            //$ret = $this->auth->direct($user->id);
+            $ret = $this->auth->login($mobile, $captcha);
+            if ($ret) {
+                $data = ['userinfo' => $this->auth->getUserinfo()];
+                $this->success(__('Logged in successful'), $data);
+            } else {
+                $this->error($this->auth->getError());
+            }
         } else {
-            $this->error('请联系管理员');
+            $this->error('账号不存在,请联系管理员');
             //$ret = $this->auth->register($mobile, Random::alnum(), '', $mobile, []);
         }
-        if ($ret) {
+        /*if ($ret) {
             Sms::flush($mobile, 'mobilelogin');
             $data = ['userinfo' => $this->auth->getUserinfo()];
             $this->success(__('Logged in successful'), $data);
         } else {
             $this->error($this->auth->getError());
-        }
+        }*/
     }
 
     /**
@@ -172,6 +179,7 @@ class User extends Api
                 $this->error(__('Username already exists'));
             }
             $user->username = $username;
+            $user->nickname = $username;
         }
         if ($nickname) {
             $exists = \app\common\model\User::where('nickname', $nickname)->where('id', '<>', $this->auth->id)->find();
